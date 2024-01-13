@@ -1,0 +1,604 @@
+CREATE DATABASE TechTroveEurope;
+USE TechTroveEurope;
+SHOW TABLES;
+
+CREATE TABLE Employees (
+    EmployeeID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    JobTitleID INT,
+    CountryID INT,
+    CityID INT);
+    
+
+INSERT INTO Employees (FirstName, LastName, JobTitleID, CountryID, CityID)
+VALUES
+('Lukas', 'Schmidt', 1, 1, 1),
+('Sophie', 'Müller',  1, 1, 1),
+('Finn', 'Schneider',  1, 1, 1),
+('Emilia', 'Fischer', 2, 1, 1),
+('Liam', 'Meyer', 3, 1, 2),
+('Hannah', 'Weber', 4, 1, 1),
+('Max', 'Wagner', 4, 1, 2),
+('Lina', 'Becker', 4, 1, 3),
+('Ben', 'Schulz', 4, 1, 4),
+('Mia', 'Hoffmann', 4, 1, 5),
+('Leon', 'Koch', 5, 1, 1),
+('Clara', 'Bauer', 5, 1, 1),
+('Noah', 'Richter', 5, 1, 1),
+('Emma', 'Klein', 5, 1, 1),
+('Paul', 'Wolf', 5, 1, 2),
+('Lena', 'Schröder', 5, 1, 2),
+('Felix', 'Neumann', 5, 1, 2),
+('Mila', 'Schwarz', 5, 1, 3),
+('Oskar', 'Zimmermann', 5, 1, 3),
+('Marie', 'Braun', 5, 1, 4),
+('Elias', 'Hofmann', 5, 1, 4),
+('Anna', 'Krüger', 5, 1, 5),
+('David', 'Hartmann', 6, 1, 1),
+('Lara', 'Lange', 6, 1, 1),
+('Jan', 'Schmitt', 6, 1, 1),
+('Johanna', 'Werner', 6, 1, 1),
+('Jonas', 'Schulze', 6, 1, 1),
+('Amelie', 'Maier', 6, 1, 1),
+('Luca', 'Krause', 6, 1, 2),
+('Mara', 'Meier', 6, 1, 2),
+('Tim', 'Huber', 6, 1, 2),
+('Sarah', 'Schmitt', 6, 1, 2),
+('Erik', 'Walter', 6, 1, 2),
+('Laura', 'Kühn', 6, 1, 3),
+('Jakob', 'Lorenz', 6, 1, 3),
+('Jana', 'Lehmann', 6, 1, 3),
+('Philipp', 'Günther', 6, 1, 3),
+('Isabel', 'Kaiser', 6, 1, 3),
+('Fabian', 'Bergmann', 6, 1, 3),
+('Carolin', 'Voigt', 6, 1, 4),
+('Marc', 'Fuchs', 6, 1, 4),
+('Tina', 'Hermann', 6, 1, 4),
+('Nico', 'Schreiber', 6, 1, 4),
+('Paula', 'Schultheiss', 6, 1, 4),
+('Daniel', 'Graf', 6, 1, 4),
+('Raphaela', 'Vogel', 6, 1, 5),
+('Moritz', 'Keller', 6, 1, 5),
+('Lisa', 'Frank', 6, 1, 5),
+('Jonah', 'Bach', 6, 1, 5),
+('Lea', 'Hartwig', 6, 1, 5),
+('Lucas', 'Dubois', 4, 2, 6),
+('Emma', 'Martin', 4, 2, 6),
+('Louis', 'Bernard', 4, 2, 7),
+('Chloé', 'Thomas', 4, 2, 8),
+('Hugo', 'Robert', 4, 2, 8),
+('Léa', 'Richard', 5, 2, 6),
+('Nathan', 'Petit', 5, 2, 6),
+('Manon', 'Durand', 5, 2, 6),
+('Enzo', 'Leroy', 5, 2, 6),
+('Jade', 'Moreau', 5, 2, 7),
+('Gabriel', 'Simon', 5, 2, 7),
+('Lola', 'Laurent', 5, 2, 7),
+('Adam', 'Lefebvre', 5, 2, 8),
+('Inès', 'Michel', 5, 2, 8),
+('Mathis', 'Garcia', 5, 2, 8),
+('Zoé', 'Roux', 6, 2, 6),
+('Noah', 'Girard', 6, 2, 6),
+('Louna', 'Fournier', 6, 2, 6),
+('Théo', 'Dupont', 6, 2, 6),
+('Léna', 'Morel', 6, 2, 6),
+('Raphaël', 'Garnier', 6, 2, 6),
+('Sacha', 'Faure', 6, 2, 7),
+('Clara', 'Barbier', 6, 2, 7),
+('Maxime', 'Leclerc', 6, 2, 7),
+('Lily', 'Renard', 6, 2, 7),
+('Ethan', 'Gauthier', 6, 2, 8),
+('Anaïs', 'Perrin', 6, 2, 8),
+('Marius', 'Guillaume', 6, 2, 8),
+('Maëlys', 'Marchand', 6, 2, 8),
+('Mathéo', 'Rey', 6, 2, 8),
+('Alejandro', 'García', 4, 3, 9),
+('Sofía', 'Rodríguez', 4, 3, 9),
+('Pablo', 'Fernández', 4, 3, 10),
+('Lucía', 'López', 4, 3, 10),
+('Daniel', 'Martínez', 4, 3, 11),
+('Valeria', 'González', 4, 3, 12),
+('Ángel', 'Pérez', 5, 3, 9),
+('Julia', 'Sánchez', 5, 3, 9),
+('Diego', 'Romero', 5, 3, 9),
+('Paula', 'Suárez', 5, 3, 9),
+('Adrián', 'Díaz', 5, 3, 10),
+('Alba', 'Torres', 5, 3, 10),
+('Mario', 'Vázquez', 5, 3, 10),
+('Elena', 'Jiménez', 5, 3, 10),
+('Javier', 'Moreno', 5, 3, 11),
+('Carmen', 'Ruiz', 5, 3, 11),
+('Iván', 'Hernández', 5, 3, 12),
+('Emma', 'Navarro', 5, 3, 12),
+('Rubén', 'Iglesias', 6, 3, 9),
+('Sara', 'Gómez', 6, 3, 9),
+('Hugo', 'Castro', 6, 3, 9),
+('Marina', 'Ortega', 6, 3, 9),
+('Martín', 'Morales', 6, 3, 9),
+('Carla', 'Flores', 6, 3, 9),
+('Samuel', 'Cruz', 6, 3, 9),
+('Julia', 'Reyes', 6, 3, 10),
+('Luis', 'Gutiérrez', 6, 3, 10),
+('Aitana', 'Garrido', 6, 3, 10),
+('Gael', 'Marín', 6, 3, 10),
+('Lucía', 'Serrano', 6, 3, 10),
+('Marcos', 'Vidal', 6, 3, 10),
+('Eva', 'Medina', 6, 3, 11),
+('Adriana', 'Aguilar', 6, 3, 11),
+('Andrés', 'Peña', 6, 3, 11),
+('Noa', 'Esteban', 6, 3, 11),
+('Juan', 'Rivas', 6, 3, 12),
+('Nerea', 'Delgado', 6, 3, 12),
+('Iker', 'Moya', 6, 3, 12),
+('Ainhoa', 'Campos', 6, 3, 12),
+('Oliver', 'Lara', 6, 3, 12),
+('Francesco', 'Russo', 4, 4, 13),
+('Giulia', 'Bianchi', 4, 4, 13),
+('Marco', 'Romano', 4, 4, 14),
+('Alessia', 'Conti', 5, 4, 13),
+('Lorenzo', 'Rossi', 5, 4, 13),
+('Chiara', 'Gallo', 5, 4, 13),
+('Matteo', 'Ferrari', 5, 4, 13),
+('Sara', 'Ricci', 5, 4, 14),
+('Davide', 'Marino', 5, 4, 14),
+('Elisa', 'Greco', 5, 4, 14),
+('Luca', 'De Luca', 6, 4, 13),
+('Martina', 'Costa', 6, 4, 13),
+('Fabio', 'Lombardi', 6, 4, 13),
+('Alice', 'Barbieri', 6, 4, 13),
+('Giovanni', 'Mancini', 6, 4, 13),
+('Valentina', 'Moretti', 6, 4, 13),
+('Riccardo', 'Orlando', 6, 4, 14),
+('Eleonora', 'Galli', 6, 4, 14),
+('Andrea', 'Ferrara', 6, 4, 14),
+('Giorgia', 'Pellegrini', 6, 4, 14),
+('Jakub', 'Kowalski', 4, 5, 16),
+('Zuzanna', 'Nowak', 4, 5, 16),
+('Michał', 'Wiśniewski', 4, 5, 17),
+('Maja', 'Wójcik', 4, 5, 17),
+('Szymon', 'Kamiński', 5, 5, 16),
+('Natalia', 'Kowalczyk', 5, 5, 16),
+('Adam', 'Lewandowski', 5, 5, 16),
+('Julia', 'Zielińska', 5, 5, 17),
+('Kacper', 'Szymański', 5, 5, 17),
+('Hanna', 'Dąbrowska', 6, 5, 16),
+('Piotr', 'Jankowski', 6, 5, 16),
+('Oliwia', 'Woźniak', 6, 5, 16),
+('Jan', 'Adamczyk', 6, 5, 16),
+('Aleksandra', 'Pawlak', 6, 5, 17),
+('Filip', 'Górski', 4, 5, 17),
+('Nikos', 'Papadopoulos', 4, 6, 18),
+('Eleni', 'Georgiou', 4, 6, 18),
+('Dimitris', 'Ioannou', 4, 6, 19),
+('Maria', 'Papaconstantinou', 4, 6, 18),
+('Giorgos', 'Papandreou', 5, 6, 18),
+('Sophia', 'Antoniadou', 5, 6, 18),
+('Costas', 'Nikolaidis', 5, 6, 18),
+('Anna', 'Mavroudis', 5, 6, 19),
+('Yannis', 'Vasilopoulos', 5, 6, 19),
+('Zoe', 'Christodoulou', 6, 6, 18),
+('Panos', 'Kouros', 6, 6, 18),
+('Despina', 'Papadaki', 6, 6, 18),
+('Aris', 'Papadimitriou', 6, 6, 18),
+('Katerina', 'Papoutsis', 6, 6, 19),
+('Stavros', 'Georgiadis', 6, 6, 19),
+('Jakob', 'Weiss', 4, 7, 20),
+('Paula', 'Wagner', 4, 7, 20),
+('Felix', 'Gruber', 4, 7, 21),
+('Amelie', 'Berger', 4, 7, 21),
+('Noah', 'Fischer', 4, 7, 22),
+('Emilia', 'Schmidt', 5, 7, 20),
+('Leo', 'Mayer', 5, 7, 20),
+('Mila', 'Huber', 5, 7, 20),
+('Anton', 'Hofer', 5, 7, 21),
+('Clara', 'Winkler', 5, 7, 21),
+('Luca', 'Schneider', 5, 7, 21),
+('Sophia', 'Weber', 5, 7, 22),
+('Oskar', 'Leitner', 6, 7, 20),
+('Mia', 'Neumann', 6, 7, 20),
+('Benjamin', 'Steiner', 6, 7, 20),
+('Elena', 'Wagner', 6, 7, 21),
+('Maximilian', 'Koller', 6, 7, 21),
+('Hannah', 'Haas', 6, 7, 21),
+('David', 'Pichler', 6, 7, 22),
+('Nora', 'Schmid', 6, 7, 22),
+('Oliver', 'Smith', 4, 8, 23),
+('Amelia', 'Jones', 4, 8, 23),
+('Noah', 'Williams', 4, 8, 23),
+('Ava', 'Taylor', 4, 8, 24),
+('George', 'Brown', 4, 8, 24),
+('Sophia', 'Davies', 4, 8, 25),
+('Mason', 'Evans', 4, 8, 25),
+('Isabella', 'Wilson', 4, 8, 26),
+('Oscar', 'Patel', 5, 8, 23),
+('Emily', 'Johnson', 5, 8, 23),
+('Charlie', 'Roberts', 5, 8, 23),
+('Lily', 'Davis', 5, 8, 23),
+('Jacob', 'Harrison', 5, 8, 24),
+('Grace', 'Anderson', 5, 8, 24),
+('William', 'Thompson', 5, 8, 24),
+('Olivia', 'Clark', 5, 8, 25),
+('James', 'Moore', 5, 8, 25),
+('Amelia', 'Hill', 5, 8, 25),
+('Henry', 'Ward', 5, 8, 25),
+('Charlotte', 'Baker', 5, 8, 26),
+('Liam', 'Carter',  5, 8, 26),
+('Isaac', 'Mitchell',  5, 8, 26),
+('Ella', 'Turner', 6, 8, 23),
+('Alexander', 'Cooper', 6, 8, 23),
+('Ava', 'Wright', 6, 8, 23),
+('Freddie', 'Walker', 6, 8, 23),
+('Chloe', 'Harris', 6, 8, 23),
+('Ethan', 'King', 6, 8, 23),
+('Scarlett', 'Lewis', 6, 8, 23),
+('Mia', 'Hall', 6, 8, 23),
+('Jack', 'Allen', 6, 8, 23),
+('Evie', 'Scott', 6, 8, 24),
+('Harry', 'Morgan', 6, 8, 24),
+('Poppy', 'Turnbull', 6, 8, 24),
+('Thomas', 'Barnes', 6, 8, 24),
+('Ellie', 'Fisher', 6, 8, 24),
+('Max', 'Perry', 6, 8, 24),
+('Isla', 'Bishop', 6, 8, 24),
+('Charlie', 'Wood', 6, 8, 25),
+('Lily', 'Gordon', 6, 8, 25),
+('Samuel', 'Fletcher', 6, 8, 25),
+('Florence', 'Young', 6, 8, 25),
+('Jacob', 'Gibson', 6, 8, 25),
+('Aria', 'Mills', 6, 8, 25),
+('George', 'Owen', 6, 8, 25),
+('Holly', 'Cox', 6, 8, 26),
+('Daniel', 'Bennett', 6, 8, 26),
+('Grace', 'Matthews', 6, 8, 26),
+('Leo', 'Stewart', 6, 8, 26),
+('Ruby', 'Simmons', 6, 8, 26),
+('Joseph', 'Fisher', 6, 8, 26), 
+('Liam', 'de Jong', 4, 9, 27),
+('Emma', 'van der Berg', 4, 9, 27),
+('Noah', 'Bakker', 4, 9, 27),
+('Sophie', 'Visser', 4, 9, 28),
+('Finn', 'Smit', 4, 9, 28),
+('Eva', 'de Vries', 5, 9, 27),
+('Lucas', 'Mulder', 5, 9, 27),
+('Lotte', 'van Dijk', 5, 9, 27),
+('Sem', 'Jansen', 5, 9, 28),
+('Tess', 'Hendriks', 5, 9, 28),
+('Daan', 'Meijer', 6, 9, 27),
+('Isabel', 'Kok', 6, 9, 27),
+('Ruben', 'van den Heuvel', 6, 9, 27),
+('Mia','Kramer', 6, 9, 28),
+('Luuk', 'Willems', 6, 9, 28)
+;
+
+
+ALTER TABLE Employees
+ADD CONSTRAINT FK_JobTitleID
+FOREIGN KEY (JobTitleID)
+REFERENCES HumanResources(JobTitleID);
+
+
+ALTER TABLE Employees
+ADD CONSTRAINT FK_CountryID
+FOREIGN KEY (CountryID)
+REFERENCES Countries(CountryID);
+
+ALTER TABLE Employees
+ADD CONSTRAINT FK_CityID
+FOREIGN KEY (CityID)
+REFERENCES Cities(CityID);
+
+
+CREATE TABLE HumanResources (
+	EmployeeID INT AUTO_INCREMENT PRIMARY KEY,
+    JobTitleID INT,
+    Title VARCHAR(100),
+    Salary DECIMAL(10, 2),
+    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+);
+
+
+INSERT INTO HumanResources (EmployeeID, Title, Salary)
+(SELECT EmployeeID, 'Owner', 5000
+FROM Employees
+WHERE JobTitleID = 1;
+INSERT INTO HumanResources (EmployeeID, Title, Salary)
+SELECT EmployeeID, 'CEO', 4250
+FROM Employees
+WHERE JobTitleID = 2;
+INSERT INTO HumanResources (EmployeeID, Title, Salary)
+SELECT EmployeeID, 'COO', 3750
+FROM Employees
+WHERE JobTitleID = 3;
+INSERT INTO HumanResources (EmployeeID, Title, Salary)
+SELECT EmployeeID, 'Store Manager', 2950
+FROM Employees
+WHERE JobTitleID = 4;
+INSERT INTO HumanResources (EmployeeID, Title, Salary)
+SELECT EmployeeID, 'Tech Expert', 2150
+FROM Employees
+WHERE JobTitleID = 5;
+INSERT INTO HumanResources (EmployeeID, Title, Salary)
+SELECT EmployeeID, 'Sales Specialist', 1950
+FROM Employees
+WHERE JobTitleID = 6;
+UPDATE HumanResources
+SET JobTitleID = 1
+WHERE Title = 'Owner';
+UPDATE HumanResources
+SET JobTitleID = 2
+WHERE Title = 'CEO';
+UPDATE HumanResources
+SET JobTitleID = 3
+WHERE Title = 'COO';
+UPDATE HumanResources
+SET JobTitleID = 4
+WHERE Title = 'Store Manager';
+UPDATE HumanResources
+SET JobTitleID = 5
+WHERE Title = 'Tech Expert';
+UPDATE HumanResources
+SET JobTitleID = 6
+WHERE Title = 'Sales Specialist';
+
+
+
+CREATE TABLE Countries(
+    CountryID INT AUTO_INCREMENT PRIMARY KEY,
+    Country_name VARCHAR(50)
+);
+
+INSERT INTO Countries (Country_name)
+VALUES
+('Germany'),
+('France'),
+('Spain'),
+('Italy'),
+('Poland'),
+('Greece'),
+('Austria'),
+('England'),
+('Netherlands');
+
+SELECT * FROM Countries;
+
+
+CREATE TABLE Cities (
+    CityID INT AUTO_INCREMENT PRIMARY KEY,
+    City_name VARCHAR(50),
+    CountryID INT,
+    FOREIGN KEY (CountryID) REFERENCES Countries(CountryID)
+);
+
+INSERT INTO Cities(City_name,CountryID)
+VALUES
+('Berlin',1),
+('Munich',1),
+('Frankfurt',1),
+('Hamburg',1),
+('Stuttgart', 1),
+('Paris',2),
+('Lyon',2),
+('Marseille',2),
+('Madrid','3'),
+('Barcelona',3),
+('Sevilla',3),
+('Valencia',3),
+('Rome',4),
+('Milan',4),
+('Naples',4),
+('Warsaw',5),
+('Krakow',5),
+('Athens',6),
+('Thessaloniki',6),
+('Vienna',7),
+('Salzburg',7),
+('Innsbruck',7),
+('London',8),
+('Liverpool',8),
+('Manchester',8),
+('Birmingham',8),
+('Amsterdam',9),
+('Rotterdam',9);
+
+SELECT * FROM Cities;
+
+
+
+CREATE TABLE EmployeeAttendance (
+    AttendanceID INT AUTO_INCREMENT PRIMARY KEY,
+    EmployeeID INT,
+    Date DATE,
+    Status VARCHAR(20) DEFAULT 'Active',
+    Reason VARCHAR(100) DEFAULT 'Present',
+    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+);
+
+
+INSERT INTO EmployeeAttendance (EmployeeID, Date, Status, Reason)
+SELECT
+    e.EmployeeID,
+    DATE('2023-01-01') + INTERVAL n DAY AS AttendanceDate,
+    CASE 
+        WHEN DAYOFWEEK(DATE('2023-01-01') + INTERVAL n DAY) IN (1, 7) THEN 'Inactive'
+        ELSE 'Active'
+    END AS Status,
+    CASE 
+        WHEN DAYOFWEEK(DATE('2023-01-01') + INTERVAL n DAY) IN (1, 7) THEN 'Dayoff'
+        ELSE 'Present'
+    END AS Reason
+FROM
+    Employees e
+JOIN (
+    SELECT @row := @row + 1 AS n
+    FROM Information_schema.COLUMNS, (SELECT @row := 0) r
+    WHERE @row <= DATEDIFF('2023-12-31', '2023-01-01')
+) numbers;
+
+
+-- End of Creating Database --
+
+
+
+SELECT * FROM Employees;
+SELECT * FROM HumanResources;
+SELECT * FROM Countries;
+SELECT * FROM Cities;
+SELECT * FROM EmployeeAttendance;
+
+-- QUERIES-- 
+
+-- Yearly Salary of each Employee --
+SELECT
+    Employees.EmployeeID,
+    CONCAT(Employees.Firstname, ' ', Employees.Lastname) AS EmployeeName,
+    HumanResources.Title,
+    SUM(HumanResources.Salary)*12 AS yearly_salary
+FROM
+    Employees
+JOIN
+    HumanResources ON Employees.EmployeeID = HumanResources.EmployeeID
+GROUP BY
+    Employees.EmployeeID, HumanResources.Title, EmployeeName
+ORDER BY
+    yearly_salary DESC;
+    
+    
+-- Salary by Title per month & per year -- 
+SELECT 
+    Title,
+    COUNT(EmployeeID) AS Quantity,
+    SUM(salary) AS Salary_Title_Per_Month,
+    SUM(salary) * 12 AS Salary_Title_Per_Year
+FROM
+    HumanResources
+GROUP BY Title
+ORDER BY Salary_Title_Per_Year DESC;
+
+
+-- Employees per Country --
+SELECT
+    Countries.Country_name,
+    COUNT(Employees.EmployeeID) AS Quantity
+FROM
+    Countries
+JOIN
+    Employees ON Countries.CountryID = Employees.CountryID
+GROUP BY
+    Countries.Country_name
+ORDER BY
+    Quantity DESC;
+    
+-- Employees Per City    
+SELECT
+    Cities.City_name,
+    COUNT(Employees.EmployeeID) AS Quantity
+FROM
+    Cities
+JOIN
+    Employees ON Cities.CityID = Employees.CityID
+GROUP BY
+    Cities.City_name
+ORDER BY
+    Quantity DESC;
+
+    
+-- Quantity of Employees Titles by Country & by Title
+
+SELECT
+    Countries.Country_name,
+    HumanResources.Title,
+    COUNT(HumanResources.Title) AS Quantity
+FROM
+    HumanResources
+JOIN
+    Employees ON HumanResources.EmployeeID = Employees.EmployeeID
+JOIN
+    Countries ON Employees.CountryID = Countries.CountryID
+GROUP BY
+    HumanResources.Title,
+    Countries.Country_name
+ORDER BY
+   Title, Quantity DESC;
+   
+-- Location & Quantity of Employees all over Europe by Title --
+SELECT
+    Cities.City_name,
+    HumanResources.Title,
+    COUNT(HumanResources.Title) AS Quantity
+FROM
+    HumanResources
+JOIN
+    Employees ON HumanResources.EmployeeID = Employees.EmployeeID
+JOIN
+    Cities  ON Employees.CityID = Cities.CityID
+GROUP BY
+    Cities.City_name,
+    HumanResources.Title
+ORDER BY
+    HumanResources.Title, Quantity DESC;
+    
+    
+-- Owner Names --
+
+SELECT 
+    CONCAT(Employees.FirstName,
+            ' ',
+            Employees.LastName) AS Full_Name,
+    HumanResources.Title
+FROM
+    Employees
+        JOIN
+    HumanResources ON Employees.EmployeeID = HumanResources.EmployeeID
+WHERE
+    HumanResources.Title = 'Owner';
+    
+
+-- Store Manager names and Cities --
+SELECT 
+    CONCAT(Employees.FirstName,
+            ' ',
+            Employees.LastName) AS Full_Name,
+    HumanResources.Title,
+    cities.city_name
+FROM
+    Employees
+        JOIN
+    HumanResources ON Employees.EmployeeID = HumanResources.EmployeeID
+        JOIN
+    Cities ON Employees.CityID = Cities.CityID
+WHERE
+    HumanResources.Title = 'Store Manager';
+    
+    
+  -- Count of working days & closed days of the Store --  
+SELECT
+  COUNT(CASE WHEN Status = 'Active' THEN 1 END) AS Open,
+  COUNT(CASE WHEN Status = 'Inactive' THEN 1 END) AS Closed
+FROM EmployeeAttendance;
+
+-- Employee Cost per Day
+
+SELECT HumanResources.Title, ROUND(AVG(HumanResources.Salary * 12)/365, 2) AS Cost_Per_Day
+FROM EmployeeAttendance
+JOIN HumanResources ON EmployeeAttendance.EmployeeID = HumanResources.EmployeeID
+WHERE EmployeeAttendance.Status = 'Active'
+GROUP BY HumanResources.Title
+ORDER BY Cost_Per_Day DESC;
+
+
+
+
+
+SELECT * FROM EmployeeAttendance;
+
+	
+
+
+
+
+
+
+
+
+
