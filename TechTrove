@@ -1485,7 +1485,48 @@ SELECT * FROM Cities;
 SELECT * FROM EmployeeAttendance;
 
 
+-- Sales per Product -- 
+SELECT Products.ProductID,Products.ProductName,
+COUNT(Sales.Sale_ID) AS SaleQuantity,
+SUM(Price) AS TotalProfit
+	FROM Products
+		JOIN
+        Sales ON Products.ProductID=Sales.ProductID
+			GROUP BY Products.ProductID,Products.ProductName
+				ORDER BY SaleQuantity DESC
 
+-- Sales by City --
+
+SELECT Cities.City_name,Countries.Country_name,
+COUNT(Sales.Sale_ID) AS Sales,
+SUM(Sales.Total_Price) AS MoneySales
+	FROM Cities
+    JOIN Countries ON Cities.CountryID=Countries.CountryID
+    JOIN Employees ON Cities.CityID=Employees.CityID
+    JOIN Sales ON Employees.EmployeeID=SellerID
+		GROUP BY Cities.City_name,Countries.Country_name
+			ORDER BY MoneySales DESC;
+    
+-- Selling Employees -- 
+
+SELECT 
+    Employees.EmployeeID,
+    CONCAT(Employees.FirstName, ' ', Employees.LastName) AS EmployeeName,
+    Countries.Country_Name,
+    COUNT(Sales.Sale_ID) AS number_of_sales,
+    SUM(Sales.Initial_Price) AS Initial_Prices,
+    ROUND(AVG(Sales.DiscountPercentage),2) AS Avg_DiscountPercentage,
+    SUM(Sales.Total_Price) AS Selling_Profit,
+    SUM(Sales.Initial_Price - Sales.Total_Price) AS MoneyDiscount
+FROM 
+    Employees
+JOIN
+    Countries ON Employees.CountryID = Countries.CountryID
+JOIN
+    Sales ON Employees.EmployeeID = Sales.SellerID
+GROUP BY 
+    Employees.EmployeeID, EmployeeName, Countries.Country_Name
+    ORDER BY Selling_Profit DESC
 
 	
 
