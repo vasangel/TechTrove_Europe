@@ -1,0 +1,92 @@
+import pandas as pd
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+# Load data
+df = pd.read_csv("C:/Users/Attilas/Desktop/Bill/Matrix/MyProjects/TechTrove/Sales per product.csv")
+
+# Drop unnecessary columns if any
+df = df.drop(columns=['TotalProfit'], errors='ignore')
+
+# Parameters for synthetic data generation
+months_in_year = 12
+base_variation = 0.1  # 10% random variation around each month's base
+trend_factor = 0.02  # 2% monthly increase or decrease as a trend
+
+# Initialize a list to store the synthetic data for each product
+synthetic_sales_data = []
+
+for _, row in df.iterrows():
+    product_id = row['ProductID']
+    product_name = row['ProductName']
+    base_sale = row['SaleQuantity']  # The starting point for sales this month
+
+    # Generate synthetic sales for each month
+    monthly_sales = []
+    for month in range(months_in_year):
+        # Apply a gradual trend by increasing or decreasing the base sale
+        month_sale = base_sale * (1 + trend_factor * month)
+
+        # Add random noise to simulate realistic monthly variation
+        month_sale = month_sale * (1 + np.random.uniform(-base_variation, base_variation))
+
+        monthly_sales.append(month_sale)
+
+    synthetic_sales_data.append(monthly_sales)
+
+# Convert synthetic sales data into a DataFrame
+synthetic_df = pd.DataFrame(synthetic_sales_data, columns=[f'Month_{i + 1}' for i in range(months_in_year)])
+synthetic_df['ProductID'] = df['ProductID']
+synthetic_df['ProductName'] = df['ProductName']
+
+# Define quarterly periods for aggregation
+quarters = {
+    'Q1': ['Month_1', 'Month_2', 'Month_3'],
+    'Q2': ['Month_4', 'Month_5', 'Month_6'],
+    'Q3': ['Month_7', 'Month_8', 'Month_9'],
+    'Q4': ['Month_10', 'Month_11', 'Month_12']
+}
+
+# Sum monthly sales into quarterly totals
+for quarter, months in quarters.items():
+    synthetic_df[quarter] = synthetic_df[months].sum(axis=1)
+
+# Prepare data for quarterly sales prediction
+quarterly_sales_data = synthetic_df[['Q1', 'Q2', 'Q3', 'Q4']]
+predicted_quarterly_sales = []
+
+# Time index for the 4 quarters
+X = np.arange(1, 5).reshape(-1, 1)
+
+for i, row in quarterly_sales_data.iterrows():
+    # Extract quarterly sales history for each product
+    y = row.values
+
+    # Train a linear regression model on quarterly sales
+    model = LinearRegression()
+    model.fit(X, y)
+
+    # Predict sales for the next quarter (Quarter 5)
+    next_quarter_prediction = model.predict(np.array([[5]]))
+    predicted_quarterly_sales.append(next_quarter_prediction[0])
+
+# Add quarterly predictions to the original DataFrame
+df['PredictedNextQuarterSales'] = predicted_quarterly_sales
+
+# Calculate total sales for the year for sorting
+df['TotalYearlySales'] = synthetic_df[['Q1', 'Q2', 'Q3', 'Q4']].sum(axis=1)
+
+# Sort by total yearly sales to get top and bottom 10
+top_10_best_selling = df.nlargest(10, 'TotalYearlySales')
+bottom_10_worst_selling = df.nsmallest(10, 'TotalYearlySales')
+
+# Display results
+#print("Top 10 Best-Selling Products with Next Quarter Predictions:")
+#print(top_10_best_selling[['ProductID', 'ProductName', 'TotalYearlySales', 'PredictedNextQuarterSales']])
+
+#print("\nBottom 10 Worst-Selling Products with Next Quarter Predictions:")
+#print(bottom_10_worst_selling[['ProductID', 'ProductName', 'TotalYearlySales', 'PredictedNextQuarterSales']])
+
+# Save results as CSV
+top_10_best_selling.to_csv("C:/Users/Attilas/Desktop/topbest10.csv", index=False, encoding='utf-8')
+bottom_10_worst_selling.to_csv("C:/Users/Attilas/Desktop/worst10.csv", index=False, encoding='utf-8')
